@@ -8,10 +8,49 @@
     <title>Library</title>
 </head>
 <body>
+    <div class="title">
+        <h1>Library:</h1>
+    </div>
 
     <div class="container">
-
     </div>
+
+      <form action='' method='get' class='newBookForm'>
+        <div class='title'>
+            <h1>
+                Add a new Book!
+            </h1>        
+        </div>
+
+        <div class='form-row'>
+          <label for='title'>Title:</label>
+          <input id='title' name='title' type='text' required/>
+        </div>
+
+        <div class='form-row'>
+            <label for='author'>Author:</label>
+            <input id='author' name='author' type='text' required/>
+        </div>
+
+        <div class='form-row'>
+            <label for='pages'>Pages:</label>
+            <input id='pages' name='pages' type='number' required/>
+        </div>
+
+        <div class='form-row'>
+            <label for='read'>Have you read it?</label>
+            <select id="read" name='read'>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+
+
+        <div class='form-row'>
+            <button>Add Book</button>
+        </div>
+    </form>
+
     
 </body>
 </html>

@@ -1,17 +1,58 @@
 let libraryContainer = document.querySelector('.container');
 
+const button = document.querySelector('button');
+
+const userTitle = document.querySelector("input[name='title']");
+const userAuthor = document.querySelector("input[name='author']");
+const userPages = document.querySelector("input[name='pages']");
+const userRead = document.querySelector("select[name='read']");
+
+
+const myLibrary = [];
+
+function initiateLibrary() {
+  addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, false)
+  addBookToLibrary('The Vegetarian', 'H. Kang', 192, true)
+  addBookToLibrary('Martyr!', 'K. Akbar', 331, false)
+  addBookToLibrary('Three Women', '	L. Taddeo', 320, true)
+  addBookToLibrary('A Waiter in Paris', 'E. Chisholm', 384, false)
+}
+
+initiateLibrary()
+
+button.addEventListener('click', (event) => {
+  addBookToLibrary(userTitle.value, userAuthor.value, userPages.value, userRead.value)
+  
+  userTitle.value = ''
+  userAuthor.value = ''
+  userPages.value = ''
+  userRead.value = "true"
+
+  event.preventDefault()  
+  createLibrary()
+  
+})
+
+
+
+
 // Creating the cards to show the books
 
 function createLibrary() {
+
+  while (libraryContainer.firstChild) {
+    libraryContainer.removeChild(libraryContainer.firstChild);
+  }
+
   for (let i = 0; i <= myLibrary.length; i++) {
-    const readTxt = myLibrary[i].read ? "already read" : "not read yet";
+    const readTxt = myLibrary[i].read ? "Already read ;)" : "Not read yet :(";
     
     const card = document.createElement("div")
     card.id = "book";
     libraryContainer.appendChild(card)
 
-    const title = document.createElement("h1");
-    const author = document.createElement("h2");
+    const title = document.createElement("h2");
+    const author = document.createElement("h3");
     const pages = document.createElement("p");
     const read = document.createElement("p");
 
@@ -31,10 +72,12 @@ function createLibrary() {
     
     card.appendChild(read);
     read.appendChild(readContent);
+
+    console.log(myLibrary)
 }
 }
 
-const myLibrary = [];
+
 
 function Book(title, author, pages, read) {
     if (!new.target) {
@@ -56,12 +99,16 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(book);
 }
 
-addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, false)
-addBookToLibrary('The Vegetarian', 'H. Kang', 192, true)
-addBookToLibrary('Martyr!', 'K. Akbar', 331, false)
-addBookToLibrary('Three Women', '	L. Taddeo', 320, true)
-addBookToLibrary('A Waiter in Paris', 'E. Chisholm', 384, false)
-
-
-
 createLibrary()
+
+
+
+
+
+
+/// Adding the new info from the form to the library
+
+
+
+
+

@@ -1,3 +1,70 @@
+
 .container {
-    
+    margin: 10px 40px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
 }
+
+#book {
+    background-color: lightpink;
+    border: 3px solid rgb(255, 136, 136);
+    border-radius: 10px;
+    margin: 10px;
+    width: 200px;
+    height: 200px;
+}
+
+h2, h3, p {
+    padding-left: 10px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+select {
+    margin-right: 15px;
+}
+
+
+label {
+    padding: 5px;
+    font-size: 20px;
+}
+.newBookForm {
+    margin: auto;
+    width: 50%;
+    max-width: fit-content;
+    background-color: lightgoldenrodyellow;
+    border: 3px solid rgb(255, 255, 120);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.newBookForm .title {
+    justify-self: center;
+    grid-area: 1 / 1 / 2 / 3;
+}
+
+.form-row:last-child {
+    justify-self: center;
+    grid-area: 4 / 1 / 5 / 3;
+}
+
+button {
+    font-size: 1em;
+    padding: 10px 20px;
+    background-color: white;
+    border: 1.5px solid #000;
+    border-radius: 5px;
+  }
+
+  input, select {
+    border: 1.5px solid #000;
+    border-radius: 4px;
+  }
