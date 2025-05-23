@@ -7,7 +7,6 @@ const userAuthor = document.querySelector("input[name='author']");
 const userPages = document.querySelector("input[name='pages']");
 const userRead = document.querySelector("select[name='read']");
 
-
 const myLibrary = [];
 
 function initiateLibrary() {
@@ -30,11 +29,7 @@ button.addEventListener('click', (event) => {
 
   event.preventDefault()  
   createLibrary()
-  
 })
-
-
-
 
 // Creating the cards to show the books
 
@@ -54,13 +49,26 @@ function createLibrary() {
     const title = document.createElement("h2");
     const author = document.createElement("h3");
     const pages = document.createElement("p");
-    const read = document.createElement("p");
 
     const titleContent = document.createTextNode(`${myLibrary[i].title} `)
     const authorContent = document.createTextNode(`${myLibrary[i].author} `)
-    const pagesContent = document.createTextNode(`${myLibrary[i].pages} pages, `)
-    const readContent = document.createTextNode(`${readTxt}`)
+    const pagesContent = document.createTextNode(`${myLibrary[i].pages} pages`)
     
+    const readCheckbox = document.createElement("div")
+    readCheckbox.id = "readDiv"
+
+    const readInput = document.createElement('input')
+    const label = document.createElement("label")
+    label.innerText = 'Read'
+    label.id = "readLabel"
+    readInput.type = "checkbox";
+    readInput.id = "readInput";
+    readInput.checked = myLibrary[i].read;
+
+    const remove = document.createElement("button");
+    remove.id = "btnRemove";
+    remove.textContent = "Remove Book"
+
     card.appendChild(title);
     title.appendChild(titleContent);
 
@@ -70,14 +78,25 @@ function createLibrary() {
     card.appendChild(pages);
     pages.appendChild(pagesContent);
     
-    card.appendChild(read);
-    read.appendChild(readContent);
+    card.appendChild(readCheckbox);
+    readCheckbox.appendChild(label);
+    readCheckbox.appendChild(readInput);
 
-    console.log(myLibrary)
+    card.appendChild(remove)
+
+    readInput.addEventListener('change', function() {
+      if (readInput.checked) {
+        myLibrary[i].read = true
+      } else {
+        myLibrary[i].read = false
+      }
+    });
+
+    remove.addEventListener('click', () => {
+      libraryContainer.removeChild(card);
+      });
+  }
 }
-}
-
-
 
 function Book(title, author, pages, read) {
     if (!new.target) {
@@ -88,7 +107,6 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
     this.id = crypto.randomUUID();
-    const readTxt = read ? "already read" : "not read yet";
     this.info = function() {
       return(`${this.title} by ${this.author}, ${this.pages} pages, ${readTxt}, ID: ${this.id}`)
     };
@@ -100,14 +118,6 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 createLibrary()
-
-
-
-
-
-
-/// Adding the new info from the form to the library
-
 
 
 

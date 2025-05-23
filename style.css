@@ -1,9 +1,14 @@
 
+.title {
+    margin: 10px 60px;
+    padding: 10px;
+}
 .container {
     margin: 10px 40px;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     margin-bottom: 50px;
 }
 
@@ -13,11 +18,36 @@
     border-radius: 10px;
     margin: 10px;
     width: 200px;
-    height: 200px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#readDiv {
+    padding-right: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#readLabel {
+    font-weight: bold;
+}
+
+#readInput {
+    height: 18px;
+    width: 18px
+}
+
+#book h2 {
+    height: 30px;
 }
 
 h2, h3, p {
     padding-left: 10px;
+    margin: 10px;
 }
 
 .form-row {
@@ -63,6 +93,13 @@ button {
     border: 1.5px solid #000;
     border-radius: 5px;
   }
+
+button#btnRemove {
+    background-color: white;
+    padding: 2px 5px;
+    width: fit-content;
+    margin: 10px;
+}
 
   input, select {
     border: 1.5px solid #000;
